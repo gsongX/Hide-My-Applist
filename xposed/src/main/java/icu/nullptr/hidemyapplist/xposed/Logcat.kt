@@ -24,7 +24,7 @@ private fun parseLog(level: Int, tag: String, msg: String, cause: Throwable? = n
 }
 
 private fun log(level: Int, tag: String, msg: String, cause: Throwable? = null) {
-    if (level <= Log.DEBUG && HMAService.instance?.config?.detailLog == false) return
+    if (HMAService.instance?.config?.detailLog == false) return
     logExecutor.execute {
         val parsedLog = parseLog(level, tag, msg, cause)
         HMAService.instance?.addLog(parsedLog)
